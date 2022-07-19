@@ -1,0 +1,59 @@
+<h3 class="d-flex justify-content-center mt-3">Личный кабинет</h3>
+
+{{#if userAdmin}}
+  <h4 class="d-flex justify-content-center mt-3">Добро пожаловать в Личный Кабинет администратора</h4>
+    <div class="d-flex justify-content-center mt-3">
+      <ul id="products">
+      {{#each products}}
+      <li class="list" id="li-{{id}}">{{this.name}} <button class="btn btn-secondary btn-sm delete-button" type="click" data-delete={{id}}>x</button></li>
+      {{/each}}
+    </ul>
+   </div>
+   
+   <div class="separator bg-light">
+   </div>
+    
+  <div class="d-flex justify-content-center mt-3 addForm">
+    <form id="addForm" name="placemark">
+      <h4>Добавить новый сорт чая</h4>
+      <div class="mt-3 mb-3">
+        <input type="text" name="name" id="productName" class="form-control" placeholder="Название сорта">
+      </div>
+      <div class="mb-3">
+        <input type="text" name="location" id="productLocation" class="form-control" placeholder="Координаты места происхождения">
+      </div>
+      <div class="mb-3">
+        <input type="text" name="descr" id="productDescr" class="form-control" placeholder="Описание">
+      </div>
+      <div class="mb-3">
+        <input type="text" name="image" id="urlproductImage" class="form-control" placeholder="Ссылка на картинку">
+      </div>
+      <div class="mb-3">
+        <p>Или загрузите файл со своего компьютера</p>
+        <input type="file" name="image" id="productImage" class="form-control" placeholder="image">
+      </div>
+
+      <div class="d-flex justify-content-center mt-2">
+        <button type="submit" class="btn btn-outline-success">Добавить сорт чая</button>
+      </div>
+      
+    </form>
+  </div> 
+
+  {{else}}
+      <h4 class="mt-3">Последние добавленные комментарии</h4>
+      {{#each comments}}
+      <div class="d-flex flex-column-reverse">
+        <div class="p-2 d-flex justify-content-center">
+          <div class="comments mb-0 mt-0 bg-light">
+            <h6 class="text-success">{{User.nickname}}</h6>
+            <p class="text-muted comment-text">{{this.text}}</p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+
+
+{{/if}}
+
+
